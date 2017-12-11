@@ -1,0 +1,83 @@
+<html ng-app="ionicApp">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>flex栅格系统</title>
+<style>
+   .row-wrap > div{
+    height: 100px;
+    background-color: skyblue;
+    border: 1px solid #000;
+    box-sizing: border-box;
+  }
+  .row{
+    display: flex
+  }
+  .col{
+    flex:1
+  }
+   .col-12{
+    flex: 0 0 100%
+  }
+  .col-6{
+    /*flex:  <'flex-grow'> <'flex-shrink'> <'flex-basis'> ]*/
+    /* flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。 */
+    /* flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小 */
+    /* flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。 */
+    flex: 0 0 50%
+  }
+  .col-4{
+    flex: 0 0 33.33%
+  }
+  .col-3{
+    flex: 0 0 25%
+  }
+  .row-wrap{
+    display: flex;
+    flex-wrap: wrap
+  }
+</style>
+</head>
+<body>
+    
+
+    <h1>同等大小网格</h1>
+ 
+
+  <div class="content">
+    <div class="row-wrap">
+      <div class="col-12">
+        首页
+      </div>
+      <div class="col-6">
+        消息
+      </div>
+      <div class="col-6">
+        个人中心
+      </div>
+    
+        <div class="col-4">
+            col-4
+        </div>
+        <div class="col-4">
+            col-4
+        </div>
+        <div class="col-4">
+            col-4
+        </div>
+        <div class="col-3">
+            col-3
+        </div>
+        <div class="col-3">
+            col-3
+        </div>
+        <div class="col-3">
+            col-3
+        </div>
+        <div class="col-3">
+            col-3
+        </div>
+    </div>
+  </div>
+</body>
+</html>
