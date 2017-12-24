@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    //不能在页面中挂载一个函数
+    aa:function(){
+        return 123;
+    }
   },
 
   /**
@@ -62,5 +65,19 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  //页面事件
+  radioChangeHandle(event){
+    // console.log(event.detail.value)
+
+    //通过自定义属性获取函数参数
+    console.log(event.target.dataset.index)
+  },
+  fatherHandler(){
+    console.log('我是父亲')
+  },
+  sonHandler(e) {
+    console.log('我是第'+e.target.dataset.index+'个儿子')
   }
 })

@@ -7,10 +7,12 @@
     <text class='shop-time'>营业名称：{{item.tags[0]}}</text>
   </view>
   <view class='shop-star'>
-    
     <view class='star-before' style='width:{{item.score}}%'>★★★★★</view>
     <view class='star-after'>★★★★★</view>
   </view>
 </view>
+
+<view class='loadmore loading' wx:if='{{hasMore}}'>正在加载</view>
+<view class='loadmore' wx:else>别拉了,到底了/(ㄒoㄒ)/~~</view>
 
 

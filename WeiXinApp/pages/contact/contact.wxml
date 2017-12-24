@@ -1,8 +1,73 @@
 <view class='cell'>
   <navigator class='cell-item rArrow'>
-    <text>设置</text>
+    <text>表单输入框</text>
   </navigator>
-    <navigator class='cell-item rArrow'>
-    <text>使用条款</text>
-  </navigator>
+</view>
+<view class='cell'>
+  <view class='cell-item'>
+    <input type='text' placeholder='文本'></input>
+  </view>
+  <view class='cell-item'>
+    <input password placeholder='密码'></input>
+  </view>
+  <view class='cell-item'>
+    <input type='number' placeholder='数字'></input>
+  </view>
+  <view class='cell-item'>
+    <input type='idcard' placeholder='身份证'></input>
+  </view>
+  <view class='cell-item'>
+    <text>其他表单组件</text>
+  </view>
+  <view class='cell-item'>
+    <checkbox-group>
+      <checkbox checked></checkbox>
+      <checkbox></checkbox>
+    </checkbox-group>
+  </view>
+  <view class='cell-item'>
+    <radio-group bindchange='radioChangeHandle' data-index='1'>
+      <radio color='#13D1BE' checked value='male'>男</radio>
+      <radio color='#13D1BE' value='female'>女</radio>
+      <radio disabled>保密</radio>
+    </radio-group>
+    <switch color='#13D1BE'></switch>
+  </view>
+  <view class='cell-item'>
+    <text>wxs</text>
+    <!--wxml-->
+    <wxs module="foo">
+      var sum = function(a, b) {
+        return a + b;
+      };
+      // 这里可以导出一个对象，这个对象可以直接在界面上使用 
+      module.exports.sum = sum;
+    </wxs>
+    <view> {{foo.sum(1,2)}} </view>
+    <!--不可以直接调用在data中声明的函数  -->
+    <view>{{aa()}}</view>
+  </view>
+  <view class='cell-item'>
+  <!--bind绑定的事件为冒泡  -->
+    <text>事件</text>
+    <view class='father' bindtap='fatherHandler'>
+      <view class='son' bindtap='sonHandler'></view>
+    </view>
+  </view>
+   <view class='cell-item'>
+  <!--catch绑定的事件不冒泡  -->
+    <text>事件</text>
+    <view class='father' catchtap='fatherHandler'>
+      <view class='son' catchtap='sonHandler'></view>
+    </view>
+  </view>、
+
+    <view class='cell-item'>
+  <!--通过自定义属性给函数传递参数  -->
+    <text>事件</text>
+    <view class='father' catchtap='fatherHandler'>
+      <view class='son' catchtap='sonHandler' data-index='1'>1</view>
+       <view class='son' catchtap='sonHandler' data-index='2'>2</view>
+    </view>
+  </view>
 </view>

@@ -18,9 +18,17 @@ Page({
   getShopListData(){
     wx.showNavigationBarLoading()
     //判断是否还有数据
-    if(!this.data.hasMore) true;
+    if (!this.data.hasMore && this.data.shopList.length > 0) return wx.showToast({
+      title: '到底了',
+      success(){
+        //导航加载关闭
+        wx.hideNavigationBarLoading()
+      }
+    });
+    //
+    this.data._page ++;
+    const { _page, _limit, cate_id } = this.data;
 
-    const { _page, _limit, cate_id } = this.data
     fetch(`https://locally.uieee.com/categories/${cate_id}/shops`, 'GET', { _page, _limit }).then(res=>{
       //拼接达到数据的累加
       const shops = this.data.shopList.concat(res.data)
@@ -35,7 +43,7 @@ Page({
       wx.stopPullDownRefresh()
 
       //关闭上拉提示
-      wx.hideToast()
+      wx.hideLoading()
 
     
       //导航加载关闭
@@ -60,37 +68,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-   wx.setNavigationBarTitle({
-     title: this.data.titleName
-   })
+    if(this.data.titleName){
+      wx.setNavigationBarTitle({
+        title: this.data.titleName
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({ shopList:[],_page:0,_limit:10})
+    this.setData({ shopList:[],_page:0,_limit:10,hasMore:true})
     this.getShopListData()
   },
 
@@ -98,10 +86,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    const _page = this.data._page + 1;
-    this.setData({  _page: _page })
-    wx.showToast({
-      title: 'loadMore..',
+    wx.showLoading({
+      title: 'loading',
     })
     this.getShopListData()
   },

@@ -21,12 +21,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/shopList/shopList",
+					"pathName": "pages/message/message",
 					"query": ""
 				}
 			]

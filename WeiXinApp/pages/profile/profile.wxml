@@ -1,5 +1,11 @@
 <view class='avatar center'>
-  <image src='/assets/images/avatar.png'
+  <image bindtap='loginHandler' 
+  wx:if='{{userInfo.avatarUrl}}'
+  src='{{userInfo.avatarUrl}}'
+  ></image>
+  <image bindtap='loginHandler' 
+  wx:else
+  src='/assets/images/avatar.png'
   ></image>
 </view>
 <view class='divider'></view>
@@ -25,4 +31,12 @@
   <navigator class='cell-item rArrow'>
     <text>设置</text>
   </navigator>
+</view>
+<view>
+<contact-button 
+  type="default-light" 
+  size="20"
+  session-from="weapp"
+>
+</contact-button>
 </view>

@@ -1,1 +1,18 @@
 /* pages/contact/contact.wxss */
+
+
+.father {
+  width: 300rpx;
+  height:300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: skyblue
+}
+
+
+.son{
+  width: 100rpx;
+  height:100rpx;
+  background-color: pink
+}
